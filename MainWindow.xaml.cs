@@ -25,40 +25,39 @@ namespace FileManagerLastTry
             InitializeComponent();
         }
 
-        
+        public string code { get; set; }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            (FileWeNeed.Child as System.Windows.Forms.WebBrowser).Url = new Uri("C:/");
-            TextPathLink.Text = (FileWeNeed.Child as System.Windows.Forms.WebBrowser).Url.LocalPath;
+            FileBrowserPath.Navigate("C:/");
         }
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
-            if ((FileWeNeed.Child as System.Windows.Forms.WebBrowser).CanGoBack)
+            if (FileBrowserPath.CanGoBack)
             {
-                (FileWeNeed.Child as System.Windows.Forms.WebBrowser).GoBack();
+                FileBrowserPath.GoBack();
             }
         }
 
         private void NextButton_Click(object sender, RoutedEventArgs e)
         {
-            if ((FileWeNeed.Child as System.Windows.Forms.WebBrowser).CanGoForward)
+            if (FileBrowserPath.CanGoForward)
             {
-                (FileWeNeed.Child as System.Windows.Forms.WebBrowser).GoForward();
+                FileBrowserPath.GoForward();
             }
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            (FileWeNeed.Child as System.Windows.Forms.WebBrowser).Refresh();
+            FileBrowserPath.Refresh();
         }
 
         private void TextPathLink_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Return)
             {
-                (FileWeNeed.Child as System.Windows.Forms.WebBrowser).Url = new Uri(TextPathLink.Text);
+                FileBrowserPath.Navigate(TextPathLink.Text);
             }
         }
 
@@ -69,7 +68,18 @@ namespace FileManagerLastTry
 
         private void ConnectToODButton_Click(object sender, RoutedEventArgs e)
         {
-            
+            WindowAuth WA = new WindowAuth();
+            WA.Show();
+        }
+
+        private void OneDriveFoldButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void FileBrowserPath_Navigated(object sender, NavigationEventArgs e)
+        {
+            TextPathLink.Text = e.Uri.LocalPath;
         }
     }
 }

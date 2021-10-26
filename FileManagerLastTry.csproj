@@ -1,5 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="packages\CefSharp.Common.94.4.110\build\CefSharp.Common.props" Condition="Exists('packages\CefSharp.Common.94.4.110\build\CefSharp.Common.props')" />
+  <Import Project="packages\cef.redist.x86.94.4.11\build\cef.redist.x86.props" Condition="Exists('packages\cef.redist.x86.94.4.11\build\cef.redist.x86.props')" />
+  <Import Project="packages\cef.redist.x64.94.4.11\build\cef.redist.x64.props" Condition="Exists('packages\cef.redist.x64.94.4.11\build\cef.redist.x64.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -14,6 +17,8 @@
     <WarningLevel>4</WarningLevel>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -35,6 +40,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CefSharp, Version=94.4.110.0, Culture=neutral, PublicKeyToken=40c4b6fc221f4138, processorArchitecture=MSIL">
+      <HintPath>packages\CefSharp.Common.94.4.110\lib\net452\CefSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="CefSharp.Core, Version=94.4.110.0, Culture=neutral, PublicKeyToken=40c4b6fc221f4138, processorArchitecture=MSIL">
+      <HintPath>packages\CefSharp.Common.94.4.110\lib\net452\CefSharp.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="CefSharp.Wpf, Version=94.4.110.0, Culture=neutral, PublicKeyToken=40c4b6fc221f4138, processorArchitecture=MSIL">
+      <HintPath>packages\CefSharp.Wpf.94.4.110\lib\net462\CefSharp.Wpf.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Graph.Core, Version=1.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.Graph.Core.1.3.1\lib\portable45-net45+win8+wpa81\Microsoft.Graph.Core.dll</HintPath>
     </Reference>
@@ -44,8 +58,10 @@
     <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="PresentationFramework.Aero2" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
@@ -66,6 +82,22 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Themes\ColourfulDarkTheme.xaml.cs">
+      <DependentUpon>ColourfulDarkTheme.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Themes\ColourfulLightTheme.xaml.cs">
+      <DependentUpon>ColourfulLightTheme.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Themes\DarkTheme.xaml.cs">
+      <DependentUpon>DarkTheme.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Themes\LightTheme.xaml.cs">
+      <DependentUpon>LightTheme.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Themes\ThemesController.cs" />
+    <Compile Include="WindowAuth.xaml.cs">
+      <DependentUpon>WindowAuth.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -78,6 +110,26 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Themes\ColourfulDarkTheme.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\ColourfulLightTheme.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\DarkTheme.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\LightTheme.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WindowAuth.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -107,22 +159,47 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="ArrowBack.png" />
+    <Resource Include="Icons\ArrowBack.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="ArrowNext.png" />
+    <Resource Include="Icons\ArrowNext.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="OneDriveLogo.png" />
+    <Resource Include="Icons\OneDriveLogo.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="KeyIcon.png" />
+    <Resource Include="Icons\KeyIcon.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="TextureGrad.jpg" />
+    <Resource Include="Icons\TextureGrad.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="LogoProject.png" />
+    <Resource Include="Icons\LogoProject.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\TrashIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\CircleArrowIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\MicrosoftIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="CapIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="YandexDisk.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>Данный проект ссылается на пакеты NuGet, отсутствующие на этом компьютере. Используйте восстановление пакетов NuGet, чтобы скачать их.  Дополнительную информацию см. по адресу: http://go.microsoft.com/fwlink/?LinkID=322105. Отсутствует следующий файл: {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('packages\cef.redist.x64.94.4.11\build\cef.redist.x64.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\cef.redist.x64.94.4.11\build\cef.redist.x64.props'))" />
+    <Error Condition="!Exists('packages\cef.redist.x86.94.4.11\build\cef.redist.x86.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\cef.redist.x86.94.4.11\build\cef.redist.x86.props'))" />
+    <Error Condition="!Exists('packages\CefSharp.Common.94.4.110\build\CefSharp.Common.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\CefSharp.Common.94.4.110\build\CefSharp.Common.props'))" />
+    <Error Condition="!Exists('packages\CefSharp.Common.94.4.110\build\CefSharp.Common.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\CefSharp.Common.94.4.110\build\CefSharp.Common.targets'))" />
+  </Target>
+  <Import Project="packages\CefSharp.Common.94.4.110\build\CefSharp.Common.targets" Condition="Exists('packages\CefSharp.Common.94.4.110\build\CefSharp.Common.targets')" />
 </Project>
