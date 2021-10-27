@@ -7,8 +7,13 @@
         xmlns:local="clr-namespace:FileManagerLastTry"
         mc:Ignorable="d"
         Style="{DynamicResource CustomToolWindowStyle}"
-        Title="Авторизация" Height="567.18" Width="454.651" Icon="Icons/MicrosoftIcon.png" Loaded="AuthWindow_Loaded">
+        Title="Авторизация" Height="567.18" Width="458.651" Icon="Icons/MicrosoftIcon.png" Loaded="AuthWindow_Loaded" FontSize="9">
     <Grid>
-        <cefSharp:ChromiumWebBrowser x:Name="CEFBrowserAuth" Grid.Row="0" AddressChanged="CEFBrowserAuth_AddressChanged"/>
+        <cefSharp:ChromiumWebBrowser x:Name="CEFBrowserAuth" Grid.Row="0" Visibility="Hidden"/>
+        <Button x:Name="YandexDiskButt" Content="Button" Margin="10,10,0,0" VerticalAlignment="Top" Width="140" Height="140" HorizontalAlignment="Left"/>
+        <Button x:Name="OneDrive" Content="Button" HorizontalAlignment="Left" Margin="155,10,0,0" VerticalAlignment="Top" Width="140" Height="140"/>
+        <Button Content="В разработке..." HorizontalAlignment="Left" Margin="300,10,0,0" VerticalAlignment="Top" Width="140" Height="140"/>
+        <Button Content="В разработке..." HorizontalAlignment="Left" Margin="10,155,0,0" VerticalAlignment="Top" Width="140" Height="140"/>
+        <Label Content="Следите за обновлениями на сайте проекта - studyproject.xyz" Margin="106,474,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
     </Grid>
 </Window>

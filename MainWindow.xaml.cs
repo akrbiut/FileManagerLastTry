@@ -12,6 +12,12 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Microsoft.ML.Data;
+using Microsoft.ML.Trainers.FastTree;
+using Microsoft.ML.Trainers;
+using Microsoft.ML;
+using FileManagerLastTry.ML;
+using System.IO;
 
 namespace FileManagerLastTry
 {
@@ -63,7 +69,7 @@ namespace FileManagerLastTry
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            
+
         }
 
         private void ConnectToODButton_Click(object sender, RoutedEventArgs e)
@@ -80,6 +86,22 @@ namespace FileManagerLastTry
         private void FileBrowserPath_Navigated(object sender, NavigationEventArgs e)
         {
             TextPathLink.Text = e.Uri.LocalPath;
+        }
+
+        public string PathToTheFold;
+
+        public void Sort_Click(object sender, RoutedEventArgs e)
+        {
+            SortWindow SW = new SortWindow(TextPathLink.Text);
+            SW.Show();
+            //ModelInteractive MI = new ModelInteractive();
+            //MessageBox.Show(MI.FileStatus(2, 7, 648, 3695, 30, 8));
+        }
+
+        private void Settings_Click(object sender, RoutedEventArgs e)
+        {
+            SettingWindow SW = new SettingWindow();
+            SW.Show();
         }
     }
 }

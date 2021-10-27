@@ -7,7 +7,7 @@
         xmlns:FileZone="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms"
         mc:Ignorable="d"
         Style="{DynamicResource CustomWindowStyle}"
-        Title="Файловый менеджер NoCap" Height="450" Width="809.333" Loaded="Window_Loaded" MinWidth="788" MinHeight="450" Icon="CapIcon.png">
+        Title="Файловый менеджер NoCap" Height="450" Width="809.333" Loaded="Window_Loaded" MinWidth="788" MinHeight="450" Icon="Icons/LogoProject.png">
     <Window.Resources>
         <Style x:Key="FocusVisual">
             <Setter Property="Control.Template">
@@ -60,7 +60,11 @@
     <Grid Background="#FF7C7C7C">
         <Border Margin="6,5,127,332">
             <Grid>
-                <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="50" VerticalAlignment="Top" Width="666" RenderTransformOrigin="0.5,0.5">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="15*"/>
+                    <ColumnDefinition Width="14*"/>
+                </Grid.ColumnDefinitions>
+                <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="50" VerticalAlignment="Top" Width="666" RenderTransformOrigin="0.5,0.5" Grid.ColumnSpan="2">
                     <Border.RenderTransform>
                         <TransformGroup>
                             <ScaleTransform ScaleY="-1"/>
@@ -70,7 +74,7 @@
                         </TransformGroup>
                     </Border.RenderTransform>
                 </Border>
-                <Button x:Name="BackButton" Content="" HorizontalAlignment="Left" Margin="4,27,0,0" VerticalAlignment="Top" Width="40" Height="18" Click="BackButton_Click" Foreground="{x:Null}" Style="{DynamicResource ButtonStyle1}" BorderBrush="#FFFFB400">
+                <Button x:Name="BackButton" Content="" HorizontalAlignment="Left" Margin="4,27,0,0" VerticalAlignment="Top" Width="40" Height="18" Click="BackButton_Click" Foreground="{x:Null}" Style="{DynamicResource ButtonStyle1}" BorderBrush="#FFFFB400" Effect="{DynamicResource Effect1}">
                     <Button.Resources>
                         <Style x:Key="FocusVisual">
                             <Setter Property="Control.Template">
@@ -124,7 +128,7 @@
                         <ImageBrush Stretch="None" ImageSource="Icons/ArrowBack.png"/>
                     </Button.Background>
                 </Button>
-                <Button x:Name="NextButton" Content="" HorizontalAlignment="Left" Margin="4,5,0,0" VerticalAlignment="Top" Width="40" Height="18" Click="NextButton_Click" Style="{DynamicResource ButtonStyle1}" RenderTransformOrigin="0.5,0.5" BorderBrush="#FFFFB400" Foreground="{x:Null}">
+                <Button x:Name="NextButton" Content="" HorizontalAlignment="Left" Margin="4,5,0,0" VerticalAlignment="Top" Width="40" Height="18" Click="NextButton_Click" Style="{DynamicResource ButtonStyle1}" RenderTransformOrigin="0.5,0.5" BorderBrush="#FFFFB400" Foreground="{x:Null}" Effect="{DynamicResource Effect1}">
                     <Button.Resources>
                         <Style x:Key="FocusVisual">
                             <Setter Property="Control.Template">
@@ -188,7 +192,7 @@
                         </ImageBrush>
                     </Button.Background>
                 </Button>
-                <Button x:Name="OneDriveFoldButton" Content="" HorizontalAlignment="Left" Margin="49,5,0,0" VerticalAlignment="Top" Width="40" Height="40" BorderBrush="#FF1973C6" Foreground="{x:Null}" Style="{DynamicResource ButtonStyle1}" Click="OneDriveFoldButton_Click">
+                <Button x:Name="OneDriveFoldButton" Content="" HorizontalAlignment="Left" Margin="49,5,0,0" VerticalAlignment="Top" Width="40" Height="40" BorderBrush="#FF1973C6" Foreground="{x:Null}" Style="{DynamicResource ButtonStyle1}" Click="OneDriveFoldButton_Click" Effect="{DynamicResource Effect1}">
                     <Button.Resources>
                         <Style x:Key="FocusVisual">
                             <Setter Property="Control.Template">
@@ -252,7 +256,7 @@
                         </ImageBrush>
                     </Button.Background>
                 </Button>
-                <Button x:Name="ConnectToODButton" Content="" HorizontalAlignment="Left" Margin="94,5,0,0" VerticalAlignment="Top" Width="85" Height="40" Click="ConnectToODButton_Click" RenderTransformOrigin="0.5,0.5" Foreground="{x:Null}" BorderBrush="#FF02C39A" Style="{DynamicResource ButtonStyle2}">
+                <Button x:Name="ConnectToODButton" Content="" HorizontalAlignment="Left" Margin="94,5,0,0" VerticalAlignment="Top" Width="85" Height="40" Click="ConnectToODButton_Click" RenderTransformOrigin="0.5,0.5" Foreground="White" BorderBrush="#FF02C39A" Style="{DynamicResource ButtonStyle2}" FontFamily="Verdana" FontSize="7" FontWeight="Bold" Effect="{DynamicResource Effect1}">
                     <Button.Resources>
                         <Style x:Key="ButtonStyle2" TargetType="{x:Type Button}">
                             <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
@@ -297,7 +301,18 @@
                         </ImageBrush>
                     </Button.Background>
                 </Button>
-                <Button Content="" HorizontalAlignment="Left" Margin="184,27,0,0" VerticalAlignment="Top" Width="40" Height="18" Click="Button_Click_1" Foreground="{x:Null}" Style="{DynamicResource ButtonStyle2}" BorderBrush="Red">
+                <Button x:Name="Sort" Content="Сортировать" HorizontalAlignment="Left" Margin="184,5,0,0" VerticalAlignment="Top" Width="85" Height="18" FontSize="10" FontWeight="Bold" BorderBrush="#FFFF6EA2" Style="{DynamicResource ButtonStyle1}" Click="Sort_Click" Effect="{DynamicResource Effect1}">
+                    <Button.Foreground>
+                        <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                            <GradientStop Color="#FF5E5EE8" Offset="1"/>
+                            <GradientStop Color="#FFFC68A6"/>
+                        </LinearGradientBrush>
+                    </Button.Foreground>
+                    <Button.Background>
+                        <ImageBrush ImageSource="Icons/TextureGrad.jpg" Stretch="UniformToFill" TileMode="FlipX"/>
+                    </Button.Background>
+                </Button>
+                <Button x:Name="Settings" Content="" HorizontalAlignment="Left" Margin="184,27,0,0" VerticalAlignment="Top" Width="40" Height="18" Click="Settings_Click" Foreground="{x:Null}" Style="{DynamicResource ButtonStyle2}" BorderBrush="Red" FontSize="9">
                     <Button.Resources>
                         <Style x:Key="ButtonStyle2" TargetType="{x:Type Button}">
                             <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
@@ -329,22 +344,14 @@
                             </Setter>
                         </Style>
                     </Button.Resources>
+                    <Button.Effect>
+                        <DropShadowEffect Direction="250" BlurRadius="10" Color="#FF6C0404"/>
+                    </Button.Effect>
                     <Button.Background>
-                        <ImageBrush ImageSource="Icons/TrashIcon.png" Stretch="Uniform"/>
+                        <ImageBrush ImageSource="SettingsIcon.png" Stretch="Uniform"/>
                     </Button.Background>
                 </Button>
-                <Button Content="Сортировать" HorizontalAlignment="Left" Margin="184,5,0,0" VerticalAlignment="Top" Width="85" Height="18" FontSize="10" FontWeight="Bold" BorderBrush="#FFFF6EA2" Style="{DynamicResource ButtonStyle1}">
-                    <Button.Foreground>
-                        <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
-                            <GradientStop Color="#FF5E5EE8" Offset="1"/>
-                            <GradientStop Color="#FFFC68A6"/>
-                        </LinearGradientBrush>
-                    </Button.Foreground>
-                    <Button.Background>
-                        <ImageBrush ImageSource="Icons/TextureGrad.jpg" Stretch="UniformToFill" TileMode="FlipX"/>
-                    </Button.Background>
-                </Button>
-                <TextBox x:Name="TextPathLink" HorizontalAlignment="Left" Height="17" Margin="274,16,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="388" KeyDown="TextPathLink_KeyDown"/>
+                <TextBox x:Name="TextPathLink" HorizontalAlignment="Left" Height="17" Margin="274,16,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="388" KeyDown="TextPathLink_KeyDown" Effect="{DynamicResource Effect1}" Grid.ColumnSpan="2"/>
                 <Button Content="" HorizontalAlignment="Left" Margin="229,27,0,0" VerticalAlignment="Top" Width="40" Height="18" Click="Button_Click" BorderBrush="Black" Foreground="{x:Null}" Style="{DynamicResource ButtonStyle2}">
                     <Button.Resources>
                         <Style x:Key="ButtonStyle2" TargetType="{x:Type Button}">
@@ -377,13 +384,16 @@
                             </Setter>
                         </Style>
                     </Button.Resources>
+                    <Button.Effect>
+                        <DropShadowEffect BlurRadius="6" Direction="250" Opacity="1.2" RenderingBias="Quality" ShadowDepth="3"/>
+                    </Button.Effect>
                     <Button.Background>
                         <ImageBrush ImageSource="Icons/CircleArrowIcon.png" Stretch="Uniform"/>
                     </Button.Background>
                 </Button>
-                <Label Content="Путь:" HorizontalAlignment="Left" Margin="269,0,0,0" VerticalAlignment="Top" Height="27" Width="38" FontSize="8"/>
+                <Label Content="Путь:" HorizontalAlignment="Left" Margin="269,0,0,0" VerticalAlignment="Top" Height="27" Width="38" FontSize="8" Effect="{DynamicResource Effect1}"/>
             </Grid>
         </Border>
-        <WebBrowser x:Name="FileBrowserPath" Height="314" Margin="10,63,10,0" VerticalAlignment="Top" Navigated="FileBrowserPath_Navigated"/>
+        <WebBrowser x:Name="FileBrowserPath" Margin="6,63,10,10" Navigated="FileBrowserPath_Navigated"/>
     </Grid>
 </Window>

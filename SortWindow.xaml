@@ -1,0 +1,16 @@
+﻿<Window x:Class="FileManagerLastTry.SortWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FileManagerLastTry"
+        Style="{DynamicResource CustomToolWindowStyle}"
+        mc:Ignorable="d"
+        Title="Сортировка" Height="369.895" Width="438.431" Loaded="Window_Loaded" Icon="Icons/LogoProject.png">
+    <Grid>
+        <ListBox x:Name="ListFiles" HorizontalAlignment="Left" Height="221" Margin="10,39,0,0" VerticalAlignment="Top" Width="412" SelectionChanged="ListFiles_SelectionChanged"/>
+        <Button x:Name="StartButton" Content="Начать" HorizontalAlignment="Left" Margin="10,265,0,0" VerticalAlignment="Top" Width="412" Height="37"/>
+        <Label Content="Будут отсортированы следующие файлы:" HorizontalAlignment="Left" Margin="10,13,0,0" VerticalAlignment="Top"/>
+
+    </Grid>
+</Window>

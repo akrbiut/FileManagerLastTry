@@ -8,6 +8,7 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/Themes/DarkTheme.xaml"/>
             </ResourceDictionary.MergedDictionaries>
+            <DropShadowEffect x:Key="Effect1" BlurRadius="10" Color="#FF073C31" Direction="250" RenderingBias="Quality"/>
         </ResourceDictionary>
     </Application.Resources>
 

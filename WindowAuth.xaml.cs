@@ -35,7 +35,6 @@ namespace FileManagerLastTry
             CEFBrowserAuth.Address = AuthURL;
         }
 
-        private int a = 0;
         public string ResFirstAuth_Code { get; set; }
         public string AccessToken { get; set; }
         public string RefreshTokenMG { get; set; }
@@ -45,30 +44,7 @@ namespace FileManagerLastTry
         public string MethodReQuest { get; set; }
         private void CEFBrowserAuth_AddressChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
-            ++a;
-            if (a == 4)
-            {
-                //Получение кода авторизации
-                var readyToDa = new UriBuilder(CEFBrowserAuth.Address);
-                var qscoll = HttpUtility.ParseQueryString(readyToDa.Query);
-                ResFirstAuth_Code = qscoll["code"];
-                //Активация кода и получение маркеров доступа
-                ClientIDMG = "9c443a93-ef16-413e-b02d-d203a228216a";
-                RedirectUriMG = "https://www.fileproject.xyz/filemanagernocap";
-                SecretIDMG = "uMW7Q~NyEMdLsdC6OZfcFWOU9Ps_7bLavvCsZ";
-                System.Net.WebRequest POSTOAuth = System.Net.WebRequest.Create(@"https://login.microsoftonline.com/common/oauth2/v2.0/token");
-                POSTOAuth.Method = "POST";
-                POSTOAuth.Timeout = 120000;
-                POSTOAuth.ContentType = "application/x-www-form-urlencoded";
-                MethodReQuest = $"client_id={ClientIDMG}&redirect_uri={RedirectUriMG}&client_secret={SecretIDMG}&code={ResFirstAuth_Code}&grant_type = authorization_code";
-                byte[] sentData = Encoding.UTF8.GetBytes(MethodReQuest);
-                POSTOAuth.ContentLength = sentData.Length;
-                System.IO.Stream sendStream = POSTOAuth.GetRequestStream();
-                sendStream.Write(sentData, 0, sentData.Length);
-                sendStream.Close();
-                System.Net.WebResponse result = POSTOAuth.GetResponse();
-                MessageBox.Show("OK");
-            }
+            
         }
     }
 }
